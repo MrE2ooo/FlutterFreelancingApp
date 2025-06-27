@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task4/core/constants/app_colors.dart';
 import 'package:task4/core/constants/dimensions.dart';
 import 'package:task4/core/constants/styles.dart';
+import 'package:task4/features/guest/presentation/views/asguestView.dart';
 import 'package:task4/features/splash/presentation/views/sign_in_screen.dart';
 
 
@@ -29,9 +30,18 @@ class EntryScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Skip",
-                        style: TextStyles.skipSignInText,  
+                      TextButton(
+                        
+                        onPressed: () { 
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const AsGuestView()),
+                          );
+                         },
+                        child: Text(
+                          "Skip",
+                          style: TextStyles.skipSignInText,  
+                        ),
                       ),
                       TextButton(
                         onPressed: () {
