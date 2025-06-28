@@ -3,6 +3,7 @@ import 'package:task4/core/constants/app_colors.dart';
 import 'package:task4/features/guest/presentation/widgets/CategoriesListView.dart';
 import 'package:task4/features/guest/presentation/widgets/CategoriesText.dart';
 import 'package:task4/features/guest/presentation/widgets/CustomSearchFormField.dart';
+import 'package:task4/features/guest/presentation/widgets/FeaturedFreelancersListview.dart';
 import 'package:task4/features/guest/presentation/widgets/FeaturedFreelancerstext.dart';
 import 'package:task4/features/guest/presentation/widgets/customGuestAppBar.dart';
 
@@ -30,7 +31,10 @@ class AsGuestView extends StatelessWidget {
                 SizedBox(height: 20),
                 CategoriesListView(),
                 SizedBox(height: 30),
-                FeaturedFreelancersText()
+                FeaturedFreelancersText(),
+                SizedBox(height: 13),
+                FeaturedFreelancersListView()
+
 
 
               ],
