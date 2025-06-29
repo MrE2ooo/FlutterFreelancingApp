@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class FeaturedFreelancersText extends StatelessWidget {
-  const FeaturedFreelancersText({super.key});
+class Recommendedservicestext extends StatelessWidget {
+  const Recommendedservicestext({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Featured Freelancers',
+                    'Recommended Services',
                     style: TextStyle(
                       fontFamily: 'Nunito',
                       fontWeight: FontWeight.w700, 
@@ -20,6 +20,6 @@ class FeaturedFreelancersText extends StatelessWidget {
                       
                     ),
                   ),
-                );
+                );;
   }
 }

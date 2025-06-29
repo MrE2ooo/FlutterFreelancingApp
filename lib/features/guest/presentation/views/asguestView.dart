@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:task4/core/constants/app_colors.dart';
-import 'package:task4/features/guest/presentation/widgets/CategoriesListView.dart';
-import 'package:task4/features/guest/presentation/widgets/CategoriesText.dart';
+
+import 'package:task4/features/guest/presentation/widgets/CategoriesSection.dart';
+import 'package:task4/features/guest/presentation/widgets/CustomBottomNavigationBar.dart';
 import 'package:task4/features/guest/presentation/widgets/CustomSearchFormField.dart';
-import 'package:task4/features/guest/presentation/widgets/FeaturedFreelancersListview.dart';
-import 'package:task4/features/guest/presentation/widgets/FeaturedFreelancerstext.dart';
+
 import 'package:task4/features/guest/presentation/widgets/customGuestAppBar.dart';
 
-class AsGuestView extends StatelessWidget {
+class AsGuestView extends StatefulWidget {
   const AsGuestView({super.key});
+
+  @override
+  AsGuestViewState createState() => AsGuestViewState();
+}
+
+class AsGuestViewState extends State<AsGuestView> {
+  int _selectedIndex = 0; // Default selected index for nb1.png
+
+  void _onNavItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index; 
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,27 +29,22 @@ class AsGuestView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.mainBackground,
         appBar: CustomGuestAppBar(),
+        bottomNavigationBar: CustomBottomNavigationBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onNavItemTapped,
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
-                SizedBox(height: 31),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                const SizedBox(height: 31),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
                   child: CustomSearchFormField(),
                 ),
-                SizedBox(height: 30),
-                CategoriesText(),
-                SizedBox(height: 20),
-                CategoriesListView(),
-                SizedBox(height: 30),
-                FeaturedFreelancersText(),
-                SizedBox(height: 13),
-                FeaturedFreelancersListView()
-
-
-
+                const SizedBox(height: 30),
+                if (_selectedIndex == 0) const Categoriessection(),
               ],
             ),
           ),
