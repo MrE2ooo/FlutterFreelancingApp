@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:task4/core/constants/app_colors.dart';
-
-import 'package:task4/features/guest/presentation/widgets/CategoriesSection.dart';
+import 'package:task4/features/guest/presentation/widgets/FeaturedFreelancersAndRecommendedServicesSection.dart';
 import 'package:task4/features/guest/presentation/widgets/CustomBottomNavigationBar.dart';
-import 'package:task4/features/guest/presentation/widgets/CustomSearchFormField.dart';
-
 import 'package:task4/features/guest/presentation/widgets/customGuestAppBar.dart';
-
 class AsGuestView extends StatefulWidget {
   const AsGuestView({super.key});
 
@@ -38,13 +34,7 @@ class AsGuestViewState extends State<AsGuestView> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
-                const SizedBox(height: 31),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: CustomSearchFormField(),
-                ),
-                const SizedBox(height: 30),
-                if (_selectedIndex == 0) const Categoriessection(),
+                if (_selectedIndex == 0) const FeaturedFreelancersAndRecommendedServicesSection(),
               ],
             ),
           ),
