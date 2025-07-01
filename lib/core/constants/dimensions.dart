@@ -46,5 +46,20 @@ class Dimensions {
   static double get primaryButtonHeight => 46.h;
   static double get socialIconSize => 24.w;
   static double get socialIconSpacing => 10.w;
+
+    // CustomAlertDialog dimensions
+  static double get alertDialogWidth => 270.w;
+  static double get alertDialogBorderRadius => 12.w;
+  static double get alertDialogContentPaddingVertical => 20.h;
+  static double get alertDialogTextPaddingHorizontal => 66.w;
+  static double get alertDialogTextFontSize => 16.sp;
+  static double get alertDialogDividerHeight => 20.h;
+  static double get alertDialogDividerThickness => 2.w;
+  static double get alertDialogSpacerHeight => 12.h;
+  static double get alertDialogButtonRowPaddingHorizontal => 20.w;
+  static double get alertDialogButtonPaddingHorizontal => 10.w;
+  static double get alertDialogButtonHeight => 45.h;
+  static double get alertDialogButtonBorderRadius => 8.w;
+  static double get alertDialogButtonFontSize => 14.sp;
 }
 
