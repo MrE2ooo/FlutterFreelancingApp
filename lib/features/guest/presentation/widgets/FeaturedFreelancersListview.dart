@@ -6,7 +6,7 @@ class FeaturedFreelancersListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 220,
+      height: 230,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: const [

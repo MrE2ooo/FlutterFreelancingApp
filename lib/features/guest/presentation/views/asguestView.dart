@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:task4/core/constants/app_colors.dart';
+import 'package:task4/features/guest/presentation/widgets/AvailableProjectsSection.dart';
 import 'package:task4/features/guest/presentation/widgets/CustomAlertDialog.dart';
 import 'package:task4/features/guest/presentation/widgets/FeaturedFreelancersAndRecommendedServicesSection.dart';
 import 'package:task4/features/guest/presentation/widgets/CustomBottomNavigationBar.dart';
 import 'package:task4/features/guest/presentation/widgets/customGuestAppBar.dart';
+
 class AsGuestView extends StatefulWidget {
   const AsGuestView({super.key});
 
@@ -59,7 +61,7 @@ class AsGuestViewState extends State<AsGuestView> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.mainBackground,
-        appBar: CustomGuestAppBar(),
+        appBar: _selectedIndex == 1 ? null : CustomGuestAppBar(),
         bottomNavigationBar: CustomBottomNavigationBar(
           selectedIndex: _selectedIndex,
           onItemTapped: _onNavItemTapped,
@@ -70,6 +72,7 @@ class AsGuestViewState extends State<AsGuestView> {
             child: Column(
               children: [
                 if (_selectedIndex == 0) const FeaturedFreelancersAndRecommendedServicesSection(),
+                if (_selectedIndex == 1) const Availableprojectssection(),
               ],
             ),
           ),

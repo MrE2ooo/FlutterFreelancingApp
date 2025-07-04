@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task4/core/constants/app_colors.dart';
+import 'package:task4/core/constants/dimensions.dart';
 
 class CustomGuestAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomGuestAppBar({super.key});
@@ -16,7 +17,7 @@ class CustomGuestAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Align(
               alignment: Alignment.centerLeft, // Aligns button to left
               child: Padding(
-                padding: const EdgeInsets.only(left: 300), // Adjust this value to move button left/right
+                padding:Dimensions.customGuestAppBarPadding(context), // Adjust this value to move button left/right
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF2563EB), // #2563EB

@@ -1,10 +1,11 @@
 
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Dimensions {
   // Screen dimensions
-  static double get designWidth => 360;
-  static double get designHeight => 720;
+  static double get designWidth => 412;
+  static double get designHeight => 915;
 
   // Common dimensions
   static double get smallPadding => 8.w;
@@ -51,15 +52,49 @@ class Dimensions {
   static double get alertDialogWidth => 270.w;
   static double get alertDialogBorderRadius => 12.w;
   static double get alertDialogContentPaddingVertical => 20.h;
-  static double get alertDialogTextPaddingHorizontal => 66.w;
+  static double get alertDialogTextPaddingHorizontal => 55.w;
   static double get alertDialogTextFontSize => 16.sp;
   static double get alertDialogDividerHeight => 20.h;
   static double get alertDialogDividerThickness => 2.w;
   static double get alertDialogSpacerHeight => 12.h;
   static double get alertDialogButtonRowPaddingHorizontal => 20.w;
-  static double get alertDialogButtonPaddingHorizontal => 10.w;
-  static double get alertDialogButtonHeight => 45.h;
+  static double get alertDialogButtonPaddingHorizontal => 8.w;
+  static double get alertDialogButtonHeight => 50.h;
   static double get alertDialogButtonBorderRadius => 8.w;
   static double get alertDialogButtonFontSize => 14.sp;
+
+// CustomGuestAppBar Dimensions
+  static EdgeInsets customGuestAppBarPadding(BuildContext context) {
+    // Get the actual screen width
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    // Calculate padding as a proportion of screen width relative to design width
+    double basePadding = 185.w; // Base padding for design width
+    double adaptivePadding = (screenWidth / designWidth) * basePadding;
+
+    // Ensure padding doesn't go below a minimum threshold for very narrow screens
+    double minPadding = 130.w;
+    double finalPadding = adaptivePadding < minPadding ? minPadding : adaptivePadding;
+
+    return EdgeInsets.only(left: finalPadding);
+  }
+
+  // Availbleprojectslistview Dimensions
+  static Size get projectItemButtonSize {
+    // Check if screen width is narrower than the design width
+    return ScreenUtil().screenWidth < designWidth
+        ? Size(95.w, 35.h) // Narrower screen (e.g., Galaxy Z Flip)
+        : Size(115.w, 35.h); // Default (e.g., Pixel 7)
+  }
+
+  static EdgeInsets get projectItemDeliveryPadding {
+    // Check if screen width is narrower than the design width
+    return ScreenUtil().screenWidth < designWidth
+        ? EdgeInsets.only(right: 40.w) // Narrower screen (e.g., Galaxy Z Flip)
+        : EdgeInsets.only(right: 60.w); // Default (e.g., Pixel 7)
+  }
+
+  
+
 }
 
