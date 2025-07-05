@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.7.2 <4.0.0'  # More precise SDK constraint
+  sdk: '>=3.7.2 <4.0.0' # More precise SDK constraint
 
 dependencies:
   bloc: ^9.0.0
@@ -15,6 +15,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_screenutil: ^5.9.3
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -25,7 +26,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/fonts/  # Specific font directory only (more efficient)
+    - assets/fonts/ # Specific font directory only (more efficient)
 
   fonts:
     - family: Nunito

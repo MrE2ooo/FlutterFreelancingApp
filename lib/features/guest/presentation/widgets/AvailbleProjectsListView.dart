@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task4/core/constants/dimensions.dart';
+import 'package:task4/features/guest/presentation/widgets/AvailableProjectsAlert.dart';
 
 class Availbleprojectslistview extends StatefulWidget {
   const Availbleprojectslistview({super.key});
@@ -69,12 +70,13 @@ class _AvailbleprojectslistviewState extends State<Availbleprojectslistview> {
                 setState(() {
                   isChecked[index] = !isChecked[index];
                 });
-              },
+              }, isGuest: true,
             );
           }).toList(),
     );
   }
 }
+
 
 class ProjectItem extends StatelessWidget {
   final String title;
@@ -87,6 +89,7 @@ class ProjectItem extends StatelessWidget {
   final List<String> tags;
   final bool isChecked;
   final VoidCallback onFavoriteTap;
+  final bool isGuest; // Added to check if user is a guest
 
   const ProjectItem({
     super.key,
@@ -98,13 +101,32 @@ class ProjectItem extends StatelessWidget {
     required this.delivery,
     required this.tags,
     required this.isChecked,
-    required this.onFavoriteTap, required this.Timing,
+    required this.onFavoriteTap,
+    required this.Timing,
+    required this.isGuest, // Added parameter
   });
+
+  // Method to show the alert dialog for guest users
+  void _showGuestAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          contentPadding: EdgeInsets.zero,
+          content: const Availableprojectsalert(),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 180.h, // Use .h for responsive height
+      height: 240, 
       margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
       decoration: BoxDecoration(
         color: const Color(0xff303030),
@@ -128,7 +150,13 @@ class ProjectItem extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: onFavoriteTap,
+                  onTap: () {
+                    if (isGuest) {
+                      _showGuestAlert(context); // Show alert for guest users
+                    } else {
+                      onFavoriteTap(); // Call the original callback for non-guest users
+                    }
+                  },
                   child: Image.asset(
                     isChecked ? 'redfavourite.png' : 'favourite.png',
                     width: 24.w,
@@ -182,9 +210,7 @@ class ProjectItem extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding:
-                      Dimensions
-                          .projectItemDeliveryPadding, // Use responsive padding
+                  padding: Dimensions.projectItemDeliveryPadding, // Use responsive padding
                   child: Text(
                     delivery,
                     style: TextStyle(
@@ -233,10 +259,15 @@ class ProjectItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    minimumSize:
-                        Dimensions.projectItemButtonSize, // Use responsive size
+                    minimumSize: Dimensions.projectItemButtonSize, // Use responsive size
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    if (isGuest) {
+                      _showGuestAlert(context); // Show alert for guest users
+                    } else {
+                      // Add your logic for non-guest users here (e.g., navigate to project details)
+                    }
+                  },
                   child: Text(
                     'view',
                     style: TextStyle(
